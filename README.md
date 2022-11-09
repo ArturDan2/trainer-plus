@@ -16,7 +16,7 @@ The messages, training monitoring and pictures panels are not avalible and are a
 
 ### `Reflection`
 
-In the process of making this project i continued developing my experience as a React developer. I learned how to work with external components which was a new experience for me. Also designing whole page to fit one grid without scrolling was quite a challange for me.  
+In the process of making this project i continued developing my experience as a React developer. I've learned how to work with external components which was a new experience for me. Also designing whole page to fit one grid without scrolling was quite a challange for me.  
 
 
 ### `Used technologies`
