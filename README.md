@@ -2,7 +2,7 @@
 
 ### `Introduction`
 
-The idea of this project came to me during my short episode as a gym recepcionist. At this time I spent a lot of time with many personal trainers, i watched them work with their clients and noticed the specifics of their work. I realised it's not only about showing how to lift weight properly, but also includes a lot of analisys and planning. That's how i came up with an idea of the tool that could make it easier. 
+The idea of this project came to me during my short episode as a gym recepcionist. At this time I spent a lot of time with many personal trainers, i watched them work with their clients and noticed the specifics of their work. I realised it's not only about showing how to lift weight properly, but also includes a lot of data analisys and planning. That's how i came up with an idea of the tool that could make it easier. 
 
 ### `General info`
 
