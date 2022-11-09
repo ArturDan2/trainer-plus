@@ -1,0 +1,212 @@
+
+.add-mantee.form{
+    grid-column-start: column-line1;
+    grid-column-end: column-line4;
+    grid-row-start: row-first;
+    grid-row-end: row-last;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 2rem 10rem;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    >section{
+        display: flex;
+        flex-direction: column;
+        margin: 1rem 0rem;
+        justify-content: space-between;
+        .inputs-container{
+            display: flex;
+            flex-direction: row;
+            margin: 1rem 0rem;
+            label{
+                white-space: nowrap;
+            }
+            >div{
+                display: flex;
+                flex-direction: column;
+                margin: 0rem 0.5rem;
+            }
+            input, select {
+                width: 100%;
+                height: 1.7rem;
+                font-size: 1rem;
+                margin-top: 0.2rem;
+                padding: 0 1rem;
+            }
+
+         /* Chrome, Safari, Edge, Opera */
+         input::-webkit-outer-spin-button,
+         input::-webkit-inner-spin-button {
+         -webkit-appearance: none;
+         margin: 0;
+         }
+         /* Firefox */
+         input[type=number] {
+         -moz-appearance: textfield;
+         }
+        }
+    }
+    span{
+        color: #2DBD66;
+    }
+    .submit-btn{
+        width: 30%;
+        padding: 0.5rem 1rem;
+        border: none;
+        color: white;
+        background-color: #2DBD66;
+        cursor: pointer;
+    }
+    .error-message{
+        font-size: 0.9rem;
+        color: red;
+        font-weight: 400;
+        position: absolute;
+        bottom: 1.2rem;
+    }
+}
+
+.form-succeed{
+    position: fixed;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.form-succeed.succeed{
+    display: flex;
+    opacity: 1;
+    animation-duration: 800ms;
+    animation-timing-function: ease;
+    animation-name: reveal-loader;
+}
+// Define vars we'll be using
+$brand-success: #5cb85c;
+$loader-size: 7em;
+$check-color: $brand-success;
+
+.circle-loader {
+  margin-bottom: $loader-size/2;
+  border: 10px solid rgba(0, 0, 0, 0.2);
+  border-left-color: $check-color;
+  animation: loader-spin 1.2s infinite linear;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 50%;
+  width: $loader-size;
+  height: $loader-size;
+}
+
+.load-complete {
+  -webkit-animation: none;
+  animation: none;
+  border-color: $check-color;
+  transition: border 500ms ease-out;
+}
+
+.checkmark {
+  display: block;
+  
+  &.draw:after {
+    animation-duration: 800ms;
+    animation-timing-function: ease;
+    animation-name: checkmark;
+    transform: scaleX(-1) rotate(135deg);
+  }
+  
+  &:after {
+    opacity: 1;
+    height: 3rem;
+    width: 1rem;
+    transform-origin: left top;
+    border-right: 10px solid green;
+    border-top: 10px solid green;
+    content: '';
+    left: 20%;
+    top: 55%;
+    position: absolute;
+  }
+}
+
+@keyframes reveal-loader {
+    0% {
+      opacity: 0
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+@keyframes loader-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes checkmark {
+  0% {
+    height: 0rem;
+    width: 0rem;
+    opacity: 1;
+  }
+  20% {
+    height: 0rem;
+    width: 1rem;
+    opacity: 1;
+  }
+  40% {
+    height: 3rem;
+    width: 1rem;
+    opacity: 1;
+  }
+  100% {
+    height: 3rem;
+    width: 1rem;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 850px) {
+    .add-mantee.form{
+        padding: 2rem 4rem;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .add-mantee.form{
+        overflow: auto;
+        padding: 2rem 2rem;
+        >section{
+            .inputs-container{
+                flex-direction: column;
+                width: 100%;
+            }
+        }
+    .submit-btn{
+        align-self: center;
+        min-width: fit-content;
+    }
+    }
+  }
+
+  @media (max-width: 300px) {
+    h2,span{
+        font-size: 1.3rem;
+    }
+    .add-mantee.form{
+        padding: 2rem 1.5rem;
+        >section{
+            .inputs-container{
+                >div{
+                    margin: 0rem;
+                }
+            }
+        }
+    }
+}

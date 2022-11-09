@@ -1,0 +1,112 @@
+.nav{
+    position: relative;
+    z-index: 3;
+}
+.nav-container{
+    margin: 2rem 2rem;
+    display: flex;
+    align-items: center;
+    h1{
+        color: black;
+        font-weight: 900;
+        font-style: italic;
+    }
+    span{
+        color:  #2DBD66;
+    }
+    li{
+        color: black;
+    }
+    button{
+        display: none;
+        padding: 0.5rem;
+        border-radius: 50%;
+        background: none;
+        color: black;
+        align-items: center;
+        justify-content: center;
+    }
+    .default-menu{
+        display: flex;
+        flex-direction: row;
+        a{
+            margin: 0rem 3rem;
+            align-content: center;
+        }
+    }
+    .clickout-background{
+        height: 77vh;
+        width: 100vw;
+        background-color: none;
+        position: absolute;
+        top: 8rem;
+        left: 0;
+        overflow: hidden;
+    }
+}
+
+.mobile-menu{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    height: 7rem;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    transition: all 0.5s ease;
+    a{
+        display: flex;
+        justify-content: center;
+    }
+    li{
+        padding: 1rem 2rem;
+    }
+    .close-back{
+        width: 0; 
+        height: 0; 
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-bottom: 12px solid #64b083;
+        align-self: center;
+        position: absolute;
+        bottom: 0;
+        cursor: pointer;
+    }
+}
+
+.mobile-menu.open{
+    top: 0%;
+    ~ div.clickout-background{
+        display: block;
+    }
+}
+
+.mobile-menu.closed{
+    top: -140%;
+    ~ div.clickout-background{
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .nav-container{
+        margin: 1.2rem 1rem;
+        h1{
+            margin-bottom: 1rem;
+        }
+        .default-menu{
+            display: none;
+        }
+        .menu-icon{
+            display: block;
+        }
+    }
+  }
+
+  @media (min-width: 600px) {
+    .mobile-menu.open{
+        top: -140%;
+    }
+  }
