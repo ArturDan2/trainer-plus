@@ -51,7 +51,7 @@ const EnterInitialBodycompositionData = ({affilation, setMantee}) => {
         </div>
         <input type="submit" className="initial button"></input>
       </form> :
-      <p>No data to display. Enter initial data through an Analisys Panel</p>}
+      <p>Brak danych do wyświetlenia. Wprowadź początkowe dane w panelu analitycznym.</p>}
     </div>
   )
 }
