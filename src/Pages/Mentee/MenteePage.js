@@ -1,0 +1,46 @@
+import React from 'react';
+import "./MenteePage.scss";
+import MenteeLeftPanel from './Components/MenteeLeftPanel';
+import MenteeBar from '../../GlobalComponents/MenteeBar/MenteeBar';
+import InfoSubcontainer from './Components/InfoSubcontainer';
+import { WeightChart } from './Components/WeightChart';
+import TrainingDetails from './Components/TrainingDetails';
+import BodyComposition from './Components/BodyComposition';
+import useGetMentee from './Functionality/useGetMentee';
+
+
+const MenteePage = () => {
+
+const {mentee, setMentee} = useGetMentee();
+
+const lastWeightObject = mentee ? mentee.weight[Object.keys(mentee.weight)[Object.keys(mentee.weight).length - 1]] : null;
+const lastWeight = mentee ? lastWeightObject[lastWeightObject.length - 1].weight  : null;
+
+
+return (
+  mentee ?
+    <div className="mentee-page grid-container">
+        <MenteeLeftPanel mentee={mentee}/>
+        <div className="basic-info">
+          <MenteeBar mentee={mentee} affilation="mentee-page"/>
+          <div className='info'>
+            <InfoSubcontainer icon={"W"} type={"WAGA"} value={`${lastWeight ? lastWeight : 'null'} kg`}/>
+            <InfoSubcontainer icon={"W"} type={"WIEK"} value={`${mentee.age} lat`}/>
+            <InfoSubcontainer icon={"W"} type={"WZROST"} value={`${mentee.height} cm`}/>
+            <InfoSubcontainer icon={"C"} type={"CEL"} value={`${mentee.goal}`}/>
+          </div>
+        </div>
+        <WeightChart weightData={mentee.weight} affilation={"mentee-page"}/>
+        <BodyComposition bodycompositionData={mentee.bodycomposition} affilation={"mentee-page"}/>
+        <div className="training-history">
+          <h3>Historia treningów</h3>
+          <TrainingDetails/>
+          <TrainingDetails/>
+          <TrainingDetails/>
+        </div>
+    </div>
+    : null
+  )
+}
+
+export default MenteePage

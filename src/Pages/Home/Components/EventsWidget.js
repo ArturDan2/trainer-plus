@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { db } from '../../../Firestore/firestore';
-import {collection, getDocs, query, orderBy, limit, where} from "firebase/firestore";
+import {collection, getDocs, query, limit, where} from "firebase/firestore";
 import EventBar from './EventBar';
 import {Link} from "react-router-dom";
 
@@ -21,7 +21,7 @@ const EventsWidget = () => {
   useEffect(()=> {getEvents()}, [])
 
   return (
-    eventsList && eventsList.length != 0 ?
+    eventsList && eventsList.length !== 0 ?
     <div className="events-container flex-col">
       <h3>Nadchodzące wydarzenia:</h3>
       { eventsList.map((event) => {

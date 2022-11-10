@@ -12,6 +12,7 @@ const EventBar = ({event}) => {
         resourcesData.map((object) => {
             if(object.id === typeId){
                 color = object.color
+                return color
             }
         })
         return color
