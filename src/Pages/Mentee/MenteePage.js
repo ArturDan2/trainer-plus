@@ -11,7 +11,7 @@ import useGetMentee from './Functionality/useGetMentee';
 
 const MenteePage = () => {
 
-const {mentee, setMentee} = useGetMentee();
+const {mentee} = useGetMentee();
 
 const lastWeightObject = mentee ? mentee.weight[Object.keys(mentee.weight)[Object.keys(mentee.weight).length - 1]] : null;
 const lastWeight = mentee ? lastWeightObject[lastWeightObject.length - 1].weight  : null;

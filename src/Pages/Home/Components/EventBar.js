@@ -9,10 +9,9 @@ const EventBar = ({event}) => {
 
     const getColor = () => {
         let color
-        resourcesData.map((object) => {
+        resourcesData.forEach((object) => {
             if(object.id === typeId){
                 color = object.color
-                return color
             }
         })
         return color

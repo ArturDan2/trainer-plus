@@ -27,8 +27,8 @@ const MenteeLeftPanel = ({mentee}) => {
 
   return (
       <div className={`mentee-page side-panel flex-col ${isVisible ? "visible" : "hidden"}`}>
-          <Link to={`/${mentee.id}`} state={mentee}><button className={`icon ${activePage == "home-profile" ? "highlight" : ""}`}><PersonIcon/></button></Link>
-          <Link to={`/${mentee.id}/analisys`} state={mentee}><button className={`icon ${activePage == "analisys" ? "highlight" : ""}`}><BarChartIcon/></button></Link>
+          <Link to={`/${mentee.id}`} state={mentee}><button className={`icon ${activePage === "home-profile" ? "highlight" : ""}`}><PersonIcon/></button></Link>
+          <Link to={`/${mentee.id}/analisys`} state={mentee}><button className={`icon ${activePage === "analisys" ? "highlight" : ""}`}><BarChartIcon/></button></Link>
           <Link to=""><button title="Ta funkcja jest czasowo niedostępna." className="icon inactive"><FitnessCenterIcon/></button></Link>
           <Link to=""><button title="Ta funkcja jest czasowo niedostępna." className="icon inactive"><CollectionsIcon/></button></Link>
           <div onClick={()=> {setIsVisible(!isVisible)}} className="reveal-hide-button">
