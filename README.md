@@ -1,37 +1,59 @@
-# Getting Started with Create React App
+# trainer+
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### `Introduction`
 
-## Available Scripts
+The idea of this project came to me during my short episode as a gym recepcionist. At this time I spent a lot of time with many personal trainers, i watched them work with their clients and noticed the specifics of their work. I realised it's not only about showing how to lift weight properly, but also includes a lot of data analisys and planning. That's how i came up with an idea of the tool that could make it easier. 
 
-In the project directory, you can run:
+### `General info`
 
-### `npm start`
+The purpose of this project is to make data storing and analysing by personal trainers easier. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### `Functionality`
+This web application allows to create a list of profiles of mentees and storing data about them. It also allows to monitor body weight progress, body composition and body circumferences changes. Trainer+ also gives an acces to a fully functional Scheduler (which is an external component made by DevExtreme). It provides possibilites like scheduling events for a specific day and hour, determine their repeatability if needed, determine the type of an event, modyfing evets or deleting them. . 
+Every mentee and event data, is stored in a firestore cloud where it's fetched from.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The messages, training monitoring and pictures panels are not avalible and are an idea of how fully functional application might look like. It's also included in the website as a mockups for UI appearance purposses
 
-### `npm test`
+### `Reflection`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In the process of making this project i continued developing my experience as a React developer. I've learned how to work with external components which was a new experience for me. Also designing whole page to fit one grid without scrolling was quite a challange for me.  
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `Used technologies`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+├── react@18.2.0,
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+├── sass@1.54.3,
 
-### `npm run eject`
+├── firebase@9.9.3 - firestore database & storage
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+├── react-router-dom@6.3.0
+
+├── devexpress/dx-react-scheduler@3.0.6
+
+├── devexpress/dx-react-scheduler-material-ui@3.0.6
+
+        
+### `Installation and Setup Instructions`
+
+Clone down this repository. You will need `node` and `npm` installed globally on your machine.  
+
+Installation:
+
+`npm install`  
+
+To Run Test Suite:  
+
+`npm test`  
+
+To Start Server:
+
+`npm start`  
+
+To Visit App:
+
+`localhost:3000/ideas`  
+
 
 If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
