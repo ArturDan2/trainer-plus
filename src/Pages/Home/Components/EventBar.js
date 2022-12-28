@@ -21,7 +21,7 @@ const EventBar = ({event}) => {
     <div style={{backgroundColor: getColor()}} className="bar event flex-col">
         <h3>{title}</h3>
         <div className="flex-row space-between">
-            <h4>{dateFormater(convertedDate.getDate())}.{dateFormater(convertedDate.getMonth())}.{convertedDate.getFullYear()}</h4>
+            <h4>{dateFormater(convertedDate.getDate())}.{dateFormater(convertedDate.getMonth() + 1)}.{convertedDate.getFullYear()}</h4>
             <h5>{dateFormater(convertedDate.getHours())}:{dateFormater(convertedDate.getMinutes())}</h5>
         </div>
     </div>
