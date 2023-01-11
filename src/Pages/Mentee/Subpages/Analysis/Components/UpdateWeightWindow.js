@@ -20,6 +20,7 @@ const UpdateWeightWindow = ({setMentee, weightData}) => {
     date: `${dateFormater(day)}.${dateFormater(month)}`,
     id: uniqid()
   }
+  
   let updatedWeight
   
   const setUptadedWeight = () => {
@@ -44,11 +45,18 @@ const UpdateWeightWindow = ({setMentee, weightData}) => {
       timestamp: serverTimestamp()
     });
     
+    // setMentee((prevState) => ({
+    //   ...prevState,
+    //   [weightRef]: updatedWeight,
+    //   timestamp: serverTimestamp()
+    // }));
+    
     setMentee((prevState) => ({
       ...prevState,
-      [weightRef]: updatedWeight,
+      weight: {...prevState.weight, [year]: updatedWeight},
       timestamp: serverTimestamp()
     }));
+
     weightData[year].push(newWeightObject);
     setNewWeight('')
     navigate('') //prevents changes from dissapearing after refresh

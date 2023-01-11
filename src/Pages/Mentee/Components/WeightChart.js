@@ -46,6 +46,7 @@ useEffect(() => {
   scaller();
   setPickedYear(getLastUpdatedYear(weightData))
 // eslint-disable-next-line react-hooks/exhaustive-deps
+  console.log(mentee)
 }, [mentee]);
 
 
