@@ -93,6 +93,10 @@
         animation-duration: 0.2s;
         margin-right: 1rem;
     }
+    
+    .chart-stripe.is-removed{
+        display: none;
+    }
 
 
     @keyframes extend-space {
