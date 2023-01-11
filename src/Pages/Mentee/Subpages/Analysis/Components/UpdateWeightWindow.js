@@ -20,7 +20,8 @@ const UpdateWeightWindow = ({setMentee, weightData}) => {
     date: `${dateFormater(day)}.${dateFormater(month)}`,
     id: uniqid()
   }
-  const updatedWeight = [...weightData[year], newWeightObject];
+  const updatedWeight = [...weightData[2022], newWeightObject];
+
 
   const onChangeHandler = (e) => {
     setNewWeight(e.target.value);

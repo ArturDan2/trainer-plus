@@ -34,12 +34,13 @@ useEffect(() => {
 
 useEffect(() => {
   scaller();
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [mentee]);
 
 
-const onChangeHandler = (e) => {
-  setPickedYear(e.target.value);
-}
+  function onChangeHandler(e) {
+    setPickedYear(e.target.value);
+  }
 
 const onMouseDownHandler = (e) => {
   if(!e.target.classList.contains("stripes-container") && affilation !== "mentee-page") return; 
