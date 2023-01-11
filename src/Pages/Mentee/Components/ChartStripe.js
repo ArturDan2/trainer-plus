@@ -3,6 +3,7 @@ import { doc, updateDoc, arrayRemove} from "firebase/firestore";
 import { db } from '../../../Firestore/firestore';
 import { useParams, useNavigate } from "react-router-dom";
 import ClearIcon from '@mui/icons-material/Clear';
+import { useEffect } from 'react';
 
 
 const ChartStripe = ({setMantee, affilation, weightData, year, object, scaleRatio}) => {
@@ -15,6 +16,11 @@ const ChartStripe = ({setMantee, affilation, weightData, year, object, scaleRati
     const indexOfStripe = weightData[year].indexOf(object);
     const [isRemoved, setIsRemoved] = useState("not-removed");
     const [isVisible, setIsVisible] = useState(false);
+    const [dynamicHeight, setDynamicHeight] = useState(weight/scaleRatio);
+
+    useEffect(() => {
+        setDynamicHeight(weight/scaleRatio)
+      }, [scaleRatio])
  
     const onClickHandler = async () => {
         const docRef = doc(db, "mantees", id);
@@ -34,8 +40,7 @@ const ChartStripe = ({setMantee, affilation, weightData, year, object, scaleRati
     } //removes data and updates UI
 
     return (
-        
-        <div onClick={(e)=> {e.preventDefault(); if(affilation === "mentee-page") return;  setIsVisible(!isVisible); console.log(isVisible)}} className={`chart-stripe ${affilation} ${isRemoved} ${isVisible ? "active" : "not-active"}`} style={{height: (weight)/scaleRatio + "%"}}>
+        <div onClick={(e)=> {e.preventDefault(); if(affilation === "mentee-page") return;  setIsVisible(!isVisible)}} className={`chart-stripe ${affilation} ${isRemoved} ${isVisible ? "active" : "not-active"}`} style={{height: dynamicHeight + "%"}}>
             <p>{weight}</p>
             <div className={`hidden-info ${affilation}  ${isVisible ? "visible" : "hidden"}`}>
                 <button onClick={onClickHandler} className={`delete-stripe ${affilation}`}><ClearIcon className="icon"/></button>

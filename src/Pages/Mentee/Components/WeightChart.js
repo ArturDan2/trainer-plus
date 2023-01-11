@@ -18,15 +18,17 @@ const [isDown, setIsDown] = useState(false);
 const [isActive, setIsActive] = useState(false);
 const [startX, setStartX] = useState();
 const [scrollPosition, setScrollPosition] = useState();
-
 const stripesContainer = useRef();
 
 
-const allWeights = weightData[pickedYear].map((object) => {
-  return object.weight
-})
 
-const scaller = () => {
+
+const scaller = (weightData) => {
+
+  const allWeights = weightData[pickedYear].map((object) => {
+    return object.weight
+  })
+
   if(allWeights.some(el => el > 250)){
     setScaleRatio(4)
   }else if(allWeights.some(el => el > 200)){
@@ -37,24 +39,27 @@ const scaller = () => {
 } //scales stripes so it doesnt overflow the container
 
 useEffect(() => {
-  stripesContainer.current.scrollLeft = stripesContainer.current.scrollWidth;
+  stripesContainer.current.scrollLeft = stripesContainer.current.scrollWidth; //scrolls to the max right of the container so the last updates are visible first
   setPickedYear(getLastUpdatedYear(weightData))
-}, []) //scrolls to max right of the container so the last updates are visible first
+}, [])
 
 useEffect(() => {
-  scaller();
   setPickedYear(getLastUpdatedYear(weightData))
+  scaller(weightData)
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [mentee]);
 
+useEffect(() => {
+  scaller(weightData)
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [pickedYear]);
 
-  function onChangeHandler(e) {
-    setPickedYear(e.target.value);
-  }
+const onChangeHandler =(e) => {
+  setPickedYear(e.target.value);
+}
 
 const onMouseDownHandler = (e) => {
   if(!e.target.classList.contains("stripes-container") && affilation !== "mentee-page") return; 
-  console.log(e)
   setIsDown(true);
   setIsActive(true);
   setStartX(e.pageX);
