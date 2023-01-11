@@ -14,6 +14,7 @@ const [scrollPosition, setScrollPosition] = useState();
 
 const stripesContainer = useRef();
 
+
 const allWeights = weightData[pickedYear].map((object) => {
   return object.weight
 })
@@ -28,12 +29,22 @@ const scaller = () => {
   }else setScaleRatio(1.3)
 } //scales stripes so it doesnt overflow the container
 
+const getLastUpdatedYear = (object) =>{
+  const entries = Object.entries(object);
+  let lastUpdatedYear
+  lastUpdatedYear = entries[entries.length - 1][0];
+  return lastUpdatedYear
+}
+
+getLastUpdatedYear(weightData);
+
 useEffect(() => {
-  stripesContainer.current.scrollLeft = stripesContainer.current.scrollWidth
+  stripesContainer.current.scrollLeft = stripesContainer.current.scrollWidth;
 }, []) //scrolls to max right of the container so the last updates are visible first
 
 useEffect(() => {
   scaller();
+  setPickedYear(getLastUpdatedYear(weightData))
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [mentee]);
 
