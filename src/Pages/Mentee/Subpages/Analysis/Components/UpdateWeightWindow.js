@@ -20,7 +20,15 @@ const UpdateWeightWindow = ({setMentee, weightData}) => {
     date: `${dateFormater(day)}.${dateFormater(month)}`,
     id: uniqid()
   }
-  const updatedWeight = [...weightData[2022], newWeightObject];
+  let updatedWeight
+  
+  const setUptadedWeight = () => {
+    if(weightData[year]){
+      updatedWeight = [...weightData[year], newWeightObject]
+    }else{
+      updatedWeight = [newWeightObject]
+    }
+  }
 
 
   const onChangeHandler = (e) => {
@@ -28,6 +36,7 @@ const UpdateWeightWindow = ({setMentee, weightData}) => {
   }
 
   const onSubmitHandler = async (e) => {
+    setUptadedWeight();
     e.preventDefault();
     const docRef = doc(db, "mantees", id);
     await updateDoc(docRef, {
@@ -42,7 +51,7 @@ const UpdateWeightWindow = ({setMentee, weightData}) => {
     weightData[year].push(newWeightObject);
     setNewWeight('')
     navigate('') //prevents changes from dissapearing after refresh
-  }//updates database and UI
+  }
   
   return (
     <form onSubmit={onSubmitHandler}className='flex-col'>
