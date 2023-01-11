@@ -5,7 +5,14 @@ import ChartStripe from './ChartStripe';
 
 export const WeightChart = ({mentee, weightData, affilation, setNewData, newData, setMentee}) => {
 
-const [pickedYear, setPickedYear] = useState("2022");
+const getLastUpdatedYear = (object) =>{
+  const entries = Object.entries(object);
+  let lastUpdatedYear
+  lastUpdatedYear = entries[entries.length - 1][0];
+  return lastUpdatedYear
+}
+
+const [pickedYear, setPickedYear] = useState(getLastUpdatedYear(weightData));
 const [scaleRatio, setScaleRatio] = useState(1.3);
 const [isDown, setIsDown] = useState(false);
 const [isActive, setIsActive] = useState(false);
@@ -29,24 +36,15 @@ const scaller = () => {
   }else setScaleRatio(1.3)
 } //scales stripes so it doesnt overflow the container
 
-const getLastUpdatedYear = (object) =>{
-  const entries = Object.entries(object);
-  let lastUpdatedYear
-  lastUpdatedYear = entries[entries.length - 1][0];
-  return lastUpdatedYear
-}
-
-getLastUpdatedYear(weightData);
-
 useEffect(() => {
   stripesContainer.current.scrollLeft = stripesContainer.current.scrollWidth;
+  setPickedYear(getLastUpdatedYear(weightData))
 }, []) //scrolls to max right of the container so the last updates are visible first
 
 useEffect(() => {
   scaller();
   setPickedYear(getLastUpdatedYear(weightData))
 // eslint-disable-next-line react-hooks/exhaustive-deps
-  console.log(mentee)
 }, [mentee]);
 
 
