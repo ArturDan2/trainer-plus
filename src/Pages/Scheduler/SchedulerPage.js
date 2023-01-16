@@ -23,7 +23,6 @@ import CustomWeekView from './CustomWeekView';
 import { ThemeProvider, createTheme  } from '@mui/material/styles';
 import { green } from '@mui/material/colors';
 import { resourcesData } from './resources';
-import { getData } from '../../Firestore/getData';
 import {collection, getDocs, query, updateDoc, doc, setDoc, deleteDoc} from "firebase/firestore";
 import { db } from '../../Firestore/firestore';
 import uniqid from 'uniqid';
@@ -51,7 +50,6 @@ const theme = createTheme({
 
 export const SchedulerPage =  React.forwardRef((props, ref) => {
 
-
   const [data, setData] = useState();
   const [currentDate, setCurrentDate] = useState(new Date());
   const [resources, setResources] = useState([{
@@ -60,12 +58,26 @@ export const SchedulerPage =  React.forwardRef((props, ref) => {
     instances: resourcesData,
   }])
   const [schedulerHeight, setSchedulerHeight] = useState();
-  
   const eventsCollectionRef = collection(db, "scheduler-events");
   const q = query(eventsCollectionRef);
-  
+
+  const getData = async (query) => {
+    const fetcheddata = await getDocs(query);
+    const converteddata = fetcheddata.docs.map((doc) => ({...doc.data()}));
+    const data = converteddata.map((event) => {
+      const startDateTimestamp = event.startDate.seconds;
+      const endDateTimestamp = event.endDate.seconds;
+      const convertedStartDate = new Date (startDateTimestamp * 1000).toString()
+      const convertedEndDate = new Date (endDateTimestamp * 1000).toString()
+      return {...event, startDate: convertedStartDate, endDate: convertedEndDate}
+  })
+    return data
+  };
+
   useEffect(() => {
-    getData(q, setData, getDocs);
+    getData(q).then((result) => {
+      setData(result)
+    })
   }, []);
 
   useEffect(() => {
@@ -113,7 +125,7 @@ export const SchedulerPage =  React.forwardRef((props, ref) => {
         setData(data.filter(appointment => appointment.id !== deleted))
       }
   }
-  
+
   return (
     <ThemeProvider theme={theme}>
       <Paper>

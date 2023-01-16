@@ -7,8 +7,6 @@ function useGetMentees(limitstatement){
     const [menteesList, setMenteesList] = useState([]);
     const [errorMessage, setErrorMessage] = useState("WYSTĄPIŁ PROBLEM")
 
-    
-    
     const menteesCollectionRef = collection(db, "mantees");
 
 
