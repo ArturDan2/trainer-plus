@@ -1,5 +1,5 @@
 import React from 'react'
-import { capitalizeFirstLetter } from '../../GlobalFunctionality/firstLetterCapitalizer';
+import { capitalizeFirstLetter } from '../../Utils/firstLetterCapitalizer';
 
 
 const MenteeBar = ({affilation, mentee}) => {

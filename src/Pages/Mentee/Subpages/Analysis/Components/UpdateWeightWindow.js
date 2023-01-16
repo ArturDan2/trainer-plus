@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import { doc, updateDoc, serverTimestamp} from "firebase/firestore";
 import { db } from '../../../../../Firestore/firestore';
 import { useParams, useNavigate } from "react-router-dom";
-import { dateFormater } from '../../../../../GlobalFunctionality/dateFormater';
-import {getDate} from '../../../../../GlobalFunctionality/getDate';
+import { dateFormater } from '../../../../../Utils/dateFormater';
+import {getDate} from '../../../../../Utils/getDate';
 import uniqid from 'uniqid';
 
 

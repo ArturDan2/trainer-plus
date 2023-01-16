@@ -1,6 +1,6 @@
 import React from 'react';
 import { resourcesData } from '../../Scheduler/resources';
-import { dateFormater } from '../../../GlobalFunctionality/dateFormater';
+import { dateFormater } from '../../../Utils/dateFormater';
 
 const EventBar = ({event}) => {
     const {title, startDate, typeId} = event
