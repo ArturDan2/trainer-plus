@@ -2,21 +2,21 @@ import React,{useState} from 'react';
 import "./AddMenteeStyles.scss";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from '../../../Firestore/firestore';
-import { dateFormater } from '../../../GlobalFunctionality/dateFormater';
-import {getDate} from '../../../GlobalFunctionality/getDate';
+import { dateFormater } from '../../../Utils/dateFormater';
+import {getDate} from '../../../Utils/getDate';
 import uniqid from 'uniqid';
 import { useNavigate } from 'react-router-dom';
 
 const AddMenteeForm = () => {
   
-  const [fname,setFname] = useState("");
-  const [lname,setLname] = useState("");
-  const [gender,setGender] = useState("");
-  const [email,setEmail] = useState("");
-  const [phonenumber,setPhonenumber] = useState("");
-  const [weight,setWeight] = useState("");
-  const [height,setHeight] = useState("");
-  const [goal,setGoal] = useState("");
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
+  const [gender, setGender] = useState("");
+  const [email, setEmail] = useState("");
+  const [phonenumber, setPhonenumber] = useState("");
+  const [weight, setWeight] = useState("");
+  const [height, setHeight] = useState("");
+  const [goal, setGoal] = useState("");
   const [birthday, setBirthday] = useState();
   const [errorMessage, setErrorMessage] = useState()
   const {year, month, day} = getDate();
@@ -25,34 +25,34 @@ const AddMenteeForm = () => {
 
   const navigate = useNavigate();
 
-  function NewMentee(fname,lname,gender,email,phonenumber,weight,height,goal,birthday){
-    this.fname = fname.toLowerCase();
-    this.lname = lname.toLowerCase();
-    this.gender = gender;
-    this.email = email;
-    this.phonenumber = phonenumber;
-    this.weight = 
-      {[year]: [{
-        date: `${dateFormater(day)}.${dateFormater(month)}`,
-        id: uniqid(),
-        weight: weight
-      }]};
-    this.height = height;
-    this.goal = goal;
-    this.birthday = birthday;
-    this.timestamp = serverTimestamp();
-    this.age = Math.floor((new Date() - new Date(this.birthday).getTime()) / 3.15576e+10);
-    this.searchdata = [this.fname, this.lname, this.phonenumber]
-    this.circumferences = {biceps: [], chest:[], calf:[], hips:[], shoudelrs:[], thigh:[], waist:[]}
-  }
-
   const onChangeHandler = (setState) => (e) => {
     setState(e.target.value);
   }
   
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-    const newMentee = new NewMentee(fname,lname,gender,email,phonenumber,weight,height,goal,birthday);
+
+    const newMentee = {
+      'fname' : fname.toLowerCase(),
+      'lname' : lname.toLowerCase(),
+      'gender' : gender,
+      'email' : email,
+      'phonenumber' : phonenumber,
+      'weight' : 
+        {[year]: [{
+          date: `${dateFormater(day)}.${dateFormater(month)}`,
+          id: uniqid(),
+          weight: weight
+        }]},
+      'height' : height,
+      'goal' : goal,
+      'birthday' : birthday,
+      'timestamp' : serverTimestamp(),
+      'age' : Math.floor((new Date() - new Date(birthday).getTime()) / 3.15576e+10),
+      'searchdata' : [fname, lname, phonenumber],
+      'circumferences' : {biceps: [], chest:[], calf:[], hips:[], shoudelrs:[], thigh:[], waist:[]},
+    }
+
     try {
       const docRef = await addDoc(collection(db, "mantees"), Object.assign({}, newMentee));
       console.log("Document written with ID: ", docRef.id);
