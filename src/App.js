@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import "./GlobalStyles.scss"
 import "./App.scss"
-import Nav from "./GlobalComponents/Nav/Nav";
+import Nav from "./Components/Nav/Nav";
 import HomePage from "./Pages/Home/HomePage";
 import MenteesListPage from "./Pages/MenteesList/MenteesListPage";
 import MenteePage from "./Pages/Mentee/MenteePage";

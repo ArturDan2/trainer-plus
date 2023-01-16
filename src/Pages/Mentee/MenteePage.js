@@ -1,7 +1,7 @@
 import React from 'react';
 import "./MenteePage.scss";
 import MenteeLeftPanel from './Components/MenteeLeftPanel';
-import MenteeBar from '../../GlobalComponents/MenteeBar/MenteeBar';
+import MenteeBar from '../../Components/MenteeBar/MenteeBar';
 import InfoSubcontainer from './Components/InfoSubcontainer';
 import { WeightChart } from './Components/WeightChart';
 import TrainingDetails from './Components/TrainingDetails';

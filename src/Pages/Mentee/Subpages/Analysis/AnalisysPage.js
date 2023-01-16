@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import MenteeLeftPanel from '../../Components/MenteeLeftPanel';
-import MenteeBar from '../../../../GlobalComponents/MenteeBar/MenteeBar';
+import MenteeBar from '../../../../Components/MenteeBar/MenteeBar';
 import { WeightChart } from '../../Components/WeightChart';
 import BodyComposition from '../../Components/BodyComposition';
 import useGetMentee from '../../Functionality/useGetMentee';

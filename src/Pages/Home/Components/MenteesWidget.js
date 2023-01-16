@@ -1,13 +1,12 @@
 import React from 'react';
-import MenteeBar from '../../../GlobalComponents/MenteeBar/MenteeBar';
+import MenteeBar from '../../../Components/MenteeBar/MenteeBar';
 import {Link} from "react-router-dom";
-import useGetMentees from '../../../Firestore/useGetMentees';
-
+import useSetMenteesList from '../../MenteesList/Logic/useSetMenteesList'
 
 
 const MenteesWidget = () => {
 
-  const {menteesList} = useGetMentees(2);
+  const {menteesList} = useSetMenteesList(2);
 
   return (
     <div className="mentees-container widget">

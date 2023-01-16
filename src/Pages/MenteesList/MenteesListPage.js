@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
-import MenteeBar from '../../GlobalComponents/MenteeBar/MenteeBar';
+import MenteeBar from '../../Components/MenteeBar/MenteeBar';
 import MenteesLeftPanel from './Components/MenteesLeftPanel';
 import "./MenteesListPage.scss";
 import {Link} from "react-router-dom";
-import useGetMentees from '../../Firestore/useGetMentees';
+import useSetMenteesList from './Logic/useSetMenteesList'
 import { useEffect } from 'react';
 
 
 
 const MenteesListPage = () => {
   const [searchQuestion, setSearchQuestion] = useState();
-  const {menteesList, searchMentees, paginateMentees, errorMessage} = useGetMentees(10);
+  const {menteesList, searchMentees, paginateMentees, errorMessage} = useSetMenteesList(10);
   const [isLoading, setIsLoading] = useState(true);
 
   const loadingHandler = () => {
@@ -19,7 +19,7 @@ const MenteesListPage = () => {
     }
     setTimeout(() => {setIsLoading(false)}, 10000);
   } //if no data for 10 seconds, return false
-
+  
   useEffect(()=> {
     loadingHandler()
   }, [menteesList])

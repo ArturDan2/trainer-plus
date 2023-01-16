@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import { db } from './firestore';
+import { db } from '../../../Firestore/firestore';
 import {collection, getDocs, query, orderBy, limit, where, startAfter} from "firebase/firestore";
 
 function useGetMentees(limitstatement){
@@ -12,8 +12,8 @@ function useGetMentees(limitstatement){
 
     const getMentees = async () => {
         try {
-          const q = query(menteesCollectionRef, orderBy("timestamp", "desc"), limit(limitstatement));
-          const data = await getDocs(q);
+          const firebasequery = query(menteesCollectionRef, orderBy("timestamp", "desc"), limit(limitstatement));
+          const data = await getDocs(firebasequery);
           const mentees = data.docs.map((doc) => ({...doc.data(), id: doc.id}) )
           setMenteesList && setMenteesList(mentees);}
         catch (e){
@@ -22,18 +22,18 @@ function useGetMentees(limitstatement){
        };
 
     const searchMentees = async (searchquery) => {
-        let q = null;
-        switch (searchquery.length) {
+        const setQuery = () => {
+          switch (searchquery.length) {
             case 1:
-              q = query(menteesCollectionRef, where("searchdata", "array-contains-any", searchquery));
-            break;
+              return query(menteesCollectionRef, where("searchdata", "array-contains-any", searchquery));
             case 2:
-              q = query(menteesCollectionRef, where("fname", "==", searchquery[0]), where("lname", "==", searchquery[1]));
-              break;
+              return query(menteesCollectionRef, where("fname", "==", searchquery[0]), where("lname", "==", searchquery[1]));
             default:
               return;
         };
-        const data = await getDocs(q);
+        }
+        const firebasequery = setQuery();
+        const data = await getDocs(firebasequery);
         const mentees = data.docs.map((doc) => ({...doc.data(), id: doc.id}));
         if(data.docs.length === 0){
           setErrorMessage("BRAK PODOPIECZNEGO W BAZIE");
@@ -42,8 +42,8 @@ function useGetMentees(limitstatement){
     };
 
     const paginateMentees = async (e) =>{
-      const q = query(menteesCollectionRef, orderBy("timestamp", "desc"), limit(limitstatement), startAfter(menteesList[menteesList.length - 1].timestamp));
-      const data = await getDocs(q);
+      const firebasequery = query(menteesCollectionRef, orderBy("timestamp", "desc"), limit(limitstatement), startAfter(menteesList[menteesList.length - 1].timestamp));
+      const data = await getDocs(firebasequery);
       const mentees = data.docs.map((doc) => ({...doc.data(), id: doc.id}));
       if(mentees[0] === undefined || menteesList.some(mentee => mentee.id === mentees[0].id)){
         e.target.classList.add('inactive')
