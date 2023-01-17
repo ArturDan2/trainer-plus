@@ -11,8 +11,9 @@ const UpdateWeightWindow = ({setMentee, weightData}) => {
   
   const [newWeight, setNewWeight] = useState()
   const {id} = useParams();
-  const navigate = useNavigate();
   const {year, month, day} = getDate();
+  const navigate = useNavigate();
+
   
   const weightRef = "".concat("weight.", `${year}`);
   const newWeightObject = {
