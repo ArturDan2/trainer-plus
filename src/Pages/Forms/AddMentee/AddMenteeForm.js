@@ -54,14 +54,14 @@ const AddMenteeForm = () => {
     }
 
     try {
-      const docRef = await addDoc(collection(db, "mantees"), Object.assign({}, newMentee));
+      const docRef = await addDoc(collection(db, "mantees"), newMentee);
       console.log("Document written with ID: ", docRef.id);
       setSucces(true); 
       setTimeout(()=> setAnimateCheckmark(true), 2000);
       setTimeout(()=> navigate(`/${docRef.id}`), 3000);
     } catch (e) {
-      setErrorMessage("Wystąpił błąd przy wysyłaniu formularza.")
-      console.error("Error adding document: ", e);
+        setErrorMessage("Wystąpił błąd przy wysyłaniu formularza.")
+        console.error("Error adding document: ", e);
     }
     setSucces(true);
   }
@@ -134,7 +134,6 @@ const AddMenteeForm = () => {
         </div>
       </form>
     </div>
-    
   )
 }
 
