@@ -20,7 +20,7 @@ function useGetMentees(limitstatement){
         }
        };
 
-    const searchMentees = async (searchquery) => {
+    const searchMentees = async (searchquery) => { //searchquery are the words entered in text input in search component
         const setQuery = () => {
           switch (searchquery.length) {
             case 1:
