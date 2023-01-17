@@ -8,27 +8,25 @@ import uniqid from 'uniqid';
 
 
 const UpdateWeightWindow = ({setMentee, weightData}) => {
-  
+
   const [newWeight, setNewWeight] = useState()
   const {id} = useParams();
   const {year, month, day} = getDate();
   const navigate = useNavigate();
 
-  
+
   const weightRef = "".concat("weight.", `${year}`);
   const newWeightObject = {
     weight: newWeight, 
     date: `${dateFormater(day)}.${dateFormater(month)}`,
     id: uniqid()
   }
-  
-  let updatedWeight
-  
+
   const setUptadedWeight = () => {
     if(weightData[year]){
-      updatedWeight = [...weightData[year], newWeightObject]
+      return [...weightData[year], newWeightObject]
     }else{
-      updatedWeight = [newWeightObject]
+      return [newWeightObject]
     }
   }
 
@@ -40,23 +38,22 @@ const UpdateWeightWindow = ({setMentee, weightData}) => {
   const onSubmitHandler = async (e) => {
     setUptadedWeight();
     e.preventDefault();
+    const updatedWeight = setUptadedWeight();
     const docRef = doc(db, "mantees", id);
     await updateDoc(docRef, {
       [weightRef]: updatedWeight,
       timestamp: serverTimestamp()
     });
-
     setMentee((prevState) => ({
       ...prevState,
       weight: {...prevState.weight, [year]: updatedWeight},
       timestamp: serverTimestamp()
     }));
-
     weightData[year].push(newWeightObject);
     setNewWeight('')
     navigate('') //prevents changes from dissapearing after refresh
   }
-  
+
   return (
     <form onSubmit={onSubmitHandler}className='flex-col'>
         <h5>Nowy pomiar:</h5>
