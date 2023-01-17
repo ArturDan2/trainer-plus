@@ -45,13 +45,7 @@ const UpdateWeightWindow = ({setMentee, weightData}) => {
       [weightRef]: updatedWeight,
       timestamp: serverTimestamp()
     });
-    
-    // setMentee((prevState) => ({
-    //   ...prevState,
-    //   [weightRef]: updatedWeight,
-    //   timestamp: serverTimestamp()
-    // }));
-    
+
     setMentee((prevState) => ({
       ...prevState,
       weight: {...prevState.weight, [year]: updatedWeight},
