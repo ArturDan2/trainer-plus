@@ -7,14 +7,16 @@ import { WeightChart } from './Components/WeightChart';
 import TrainingDetails from './Components/TrainingDetails';
 import BodyComposition from './Components/BodyComposition';
 import useGetMentee from './Functionality/useGetMentee';
+import { getLastElement } from '../../Utils/getLastElement';
 
 
 const MenteePage = () => {
 
 const {mentee} = useGetMentee();
 
-const lastWeightObject = mentee ? mentee.weight[Object.keys(mentee.weight)[Object.keys(mentee.weight).length - 1]] : null;
-const lastWeight = mentee ? lastWeightObject[lastWeightObject.length - 1].weight  : null;
+
+const lastWeightObject = mentee ? mentee.weight[getLastElement(Object.keys(mentee.weight))] : null;
+const lastWeight = mentee ? getLastElement(lastWeightObject).weight : null;
 
 
 return (

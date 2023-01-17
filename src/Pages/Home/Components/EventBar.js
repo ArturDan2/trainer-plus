@@ -4,7 +4,6 @@ import { dateFormater } from '../../../Utils/dateFormater';
 
 const EventBar = ({event}) => {
     const {title, startDate, typeId} = event
-
     const convertedDate = new Date (startDate.seconds * 1000)
 
     const getColor = () => {
