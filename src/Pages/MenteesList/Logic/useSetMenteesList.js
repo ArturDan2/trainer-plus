@@ -6,7 +6,6 @@ function useGetMentees(limitstatement){
 
     const [menteesList, setMenteesList] = useState([]);
     const [errorMessage, setErrorMessage] = useState("WYSTĄPIŁ PROBLEM")
-
     const menteesCollectionRef = collection(db, "mantees");
 
 
@@ -25,8 +24,11 @@ function useGetMentees(limitstatement){
         const setQuery = () => {
           switch (searchquery.length) {
             case 1:
+              // if user's searching by one word for example first name only, or number only, search if searchdata array witch contains 
+              //data desinged for searching contains this word
               return query(menteesCollectionRef, where("searchdata", "array-contains-any", searchquery));
             case 2:
+              //if users searching for mentee by two words - first name and last name, search for that specific object in manteesCollectionRef
               return query(menteesCollectionRef, where("fname", "==", searchquery[0]), where("lname", "==", searchquery[1]));
             default:
               return;
