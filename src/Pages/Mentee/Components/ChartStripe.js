@@ -23,11 +23,10 @@ const ChartStripe = ({setMentee, affilation, weightData, year, object, scaleRati
       }, [scaleRatio])
 
 
-      console.log(Object.keys(weightData).length);
     const onClickHandler = async () => {
         const docRef = doc(db, "mantees", id);
         
-        if(Object.keys(weightData).length === 1 && weightData[year].length === 1){
+        if(Object.keys(weightData).length === 1 && weightData[year].length === 1){ //if it's an only value left, prevent from deleting it
             alert('Wykres musi zawierać minimum jeden pomiar')
         }else if(weightData[year].length > 1){ //if it's not a last weight in certain year, remove stripe only
             await updateDoc(docRef, {
