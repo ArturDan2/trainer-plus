@@ -88,7 +88,7 @@ const onMouseMoveHandler = (e) => {
       <div ref={stripesContainer} className="stripes-container flex-row">
         <div className="center-fix"></div>
         {weightData[pickedYear].map((object)=>{
-            return <ChartStripe setMentee={setMentee} scaleRatio={scaleRatio} weightData={weightData} affilation={affilation} object={object} key={object.id} year={pickedYear}/>
+            return <ChartStripe setMentee={setMentee} scaleRatio={scaleRatio} weightData={weightData} affilation={affilation} object={object} key={object.id} year={pickedYear} setPickedYear={setPickedYear}/>
         })}
         <div className="center-fix"></div>
       </div>
