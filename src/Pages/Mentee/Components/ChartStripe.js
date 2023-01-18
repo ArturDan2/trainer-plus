@@ -7,13 +7,12 @@ import { useEffect } from 'react';
 
 
 const ChartStripe = ({setMentee, affilation, weightData, year, object, scaleRatio, setPickedYear}) => {
-    
+
     const {weight, date} = object;
 
     const {id} = useParams();
     const navigate = useNavigate();
     const weightRef = "".concat("weight.", `${year}`);
-    // const indexOfStripe = weightData[year].indexOf(object);
     const [isRemoved, setIsRemoved] = useState("not-removed");
     const [isVisible, setIsVisible] = useState(false);
     const [dynamicHeight, setDynamicHeight] = useState(weight/scaleRatio);
@@ -25,7 +24,7 @@ const ChartStripe = ({setMentee, affilation, weightData, year, object, scaleRati
 
     const onClickHandler = async () => {
         const docRef = doc(db, "mantees", id);
-        
+
         if(Object.keys(weightData).length === 1 && weightData[year].length === 1){ //if it's an only value left, prevent from deleting it
             alert('Wykres musi zawierać minimum jeden pomiar')
         }else if(weightData[year].length > 1){ //if it's not a last weight in certain year, remove stripe only
