@@ -1,3 +1,3 @@
-export function getLastElement (array) {
-    return array[array.length - 1]
+export function getLastElement(array) {
+  return array[array.length - 1];
 }

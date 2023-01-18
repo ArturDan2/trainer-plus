@@ -12,11 +12,10 @@ const firebaseConfig = {
   storageBucket: "trainer-plus-dc05c.appspot.com",
   messagingSenderId: "475624783732",
   appId: "1:475624783732:web:73d0564bb7867ceac4b621",
-  measurementId: "G-EVZR6P0SCB"
+  measurementId: "G-EVZR6P0SCB",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore(app);
-

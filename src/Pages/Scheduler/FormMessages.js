@@ -1,12 +1,12 @@
 export const messages = {
-  detailsLabel : 'Detale', 
-  allDayLabel : 'Cały dzień',
-  titleLabel : 'Tytuł',
-  commitCommand : 'Zapisz',
-  moreInformationLabel : 'Więcej informacji',
-  notesLabel : "Notatka",
-  repeatLabel : "Powtarzaj",
-  never : "Nigdy",
+  detailsLabel: "Detale",
+  allDayLabel: "Cały dzień",
+  titleLabel: "Tytuł",
+  commitCommand: "Zapisz",
+  moreInformationLabel: "Więcej informacji",
+  notesLabel: "Notatka",
+  repeatLabel: "Powtarzaj",
+  never: "Nigdy",
   daily: "Codziennie",
   weekly: "Co tydzień",
   monthly: "Co miesiąc",
@@ -28,5 +28,5 @@ export const messages = {
   lastLabel: "ostatni",
   yearsLabel: "rok (lata)",
   ofLabel: "",
-  everyLabel: "Każdy"
-}
+  everyLabel: "Każdy",
+};

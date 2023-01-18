@@ -1,86 +1,86 @@
-
-.add-mentee.form{
-    grid-column-start: column-line1;
-    grid-column-end: column-line4;
-    grid-row-start: row-first;
-    grid-row-end: row-last;
-    background-color: white;
-    border-radius: 1rem;
-    padding: 2rem 10rem;
+.add-mentee.form {
+  grid-column-start: column-line1;
+  grid-column-end: column-line4;
+  grid-row-start: row-first;
+  grid-row-end: row-last;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 2rem 10rem;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  > section {
     display: flex;
     flex-direction: column;
-    height: fit-content;
-    >section{
+    margin: 1rem 0rem;
+    justify-content: space-between;
+    .inputs-container {
+      display: flex;
+      flex-direction: row;
+      margin: 1rem 0rem;
+      label {
+        white-space: nowrap;
+      }
+      > div {
         display: flex;
         flex-direction: column;
-        margin: 1rem 0rem;
-        justify-content: space-between;
-        .inputs-container{
-            display: flex;
-            flex-direction: row;
-            margin: 1rem 0rem;
-            label{
-                white-space: nowrap;
-            }
-            >div{
-                display: flex;
-                flex-direction: column;
-                margin: 0rem 0.5rem;
-            }
-            input, select {
-                width: 100%;
-                height: 1.7rem;
-                font-size: 1rem;
-                margin-top: 0.2rem;
-                padding: 0 1rem;
-            }
+        margin: 0rem 0.5rem;
+      }
+      input,
+      select {
+        width: 100%;
+        height: 1.7rem;
+        font-size: 1rem;
+        margin-top: 0.2rem;
+        padding: 0 1rem;
+      }
 
-         /* Chrome, Safari, Edge, Opera */
-         input::-webkit-outer-spin-button,
-         input::-webkit-inner-spin-button {
-         -webkit-appearance: none;
-         margin: 0;
-         }
-         /* Firefox */
-         input[type=number] {
-         -moz-appearance: textfield;
-         }
-        }
+      /* Chrome, Safari, Edge, Opera */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      /* Firefox */
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
     }
-    span{
-        color: #2DBD66;
-    }
-    .submit-btn{
-        width: 30%;
-        padding: 0.5rem 1rem;
-        border: none;
-        color: white;
-        background-color: #2DBD66;
-        cursor: pointer;
-    }
-    .error-message{
-        font-size: 0.9rem;
-        color: red;
-        font-weight: 400;
-        position: absolute;
-        bottom: 1.2rem;
-    }
+  }
+  span {
+    color: #2dbd66;
+  }
+  .submit-btn {
+    width: 30%;
+    padding: 0.5rem 1rem;
+    border: none;
+    color: white;
+    background-color: #2dbd66;
+    cursor: pointer;
+  }
+  .error-message {
+    font-size: 0.9rem;
+    color: red;
+    font-weight: 400;
+    position: absolute;
+    bottom: 1.2rem;
+  }
 }
 
-.form-succeed{
-    position: fixed;
-    display: none;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+.form-succeed {
+  position: fixed;
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.form-succeed.succeed{
-    display: flex;
-    opacity: 1;
-    animation-duration: 800ms;
-    animation-timing-function: ease;
-    animation-name: reveal-loader;
+.form-succeed.succeed {
+  display: flex;
+  opacity: 1;
+  animation-duration: 800ms;
+  animation-timing-function: ease;
+  animation-name: reveal-loader;
 }
 // Define vars we'll be using
 $brand-success: #5cb85c;
@@ -109,14 +109,14 @@ $check-color: $brand-success;
 
 .checkmark {
   display: block;
-  
+
   &.draw:after {
     animation-duration: 800ms;
     animation-timing-function: ease;
     animation-name: checkmark;
     transform: scaleX(-1) rotate(135deg);
   }
-  
+
   &:after {
     opacity: 1;
     height: 3rem;
@@ -124,7 +124,7 @@ $check-color: $brand-success;
     transform-origin: left top;
     border-right: 10px solid green;
     border-top: 10px solid green;
-    content: '';
+    content: "";
     left: 20%;
     top: 55%;
     position: absolute;
@@ -132,13 +132,13 @@ $check-color: $brand-success;
 }
 
 @keyframes reveal-loader {
-    0% {
-      opacity: 0
-    }
-    100% {
-      opacity: 1;
-    }
+  0% {
+    opacity: 0;
   }
+  100% {
+    opacity: 1;
+  }
+}
 
 @keyframes loader-spin {
   0% {
@@ -173,40 +173,41 @@ $check-color: $brand-success;
 }
 
 @media (max-width: 850px) {
-    .add-mentee.form{
-        padding: 2rem 4rem;
+  .add-mentee.form {
+    padding: 2rem 4rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .add-mentee.form {
+    overflow: auto;
+    padding: 2rem 2rem;
+    > section {
+      .inputs-container {
+        flex-direction: column;
+        width: 100%;
+      }
+    }
+    .submit-btn {
+      align-self: center;
+      min-width: fit-content;
     }
   }
+}
 
-  @media (max-width: 700px) {
-    .add-mentee.form{
-        overflow: auto;
-        padding: 2rem 2rem;
-        >section{
-            .inputs-container{
-                flex-direction: column;
-                width: 100%;
-            }
+@media (max-width: 300px) {
+  h2,
+  span {
+    font-size: 1.3rem;
+  }
+  .add-mentee.form {
+    padding: 2rem 1.5rem;
+    > section {
+      .inputs-container {
+        > div {
+          margin: 0rem;
         }
-    .submit-btn{
-        align-self: center;
-        min-width: fit-content;
-    }
+      }
     }
   }
-
-  @media (max-width: 300px) {
-    h2,span{
-        font-size: 1.3rem;
-    }
-    .add-mentee.form{
-        padding: 2rem 1.5rem;
-        >section{
-            .inputs-container{
-                >div{
-                    margin: 0rem;
-                }
-            }
-        }
-    }
 }
