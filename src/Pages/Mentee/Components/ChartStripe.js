@@ -27,8 +27,6 @@ const ChartStripe = ({
     setDynamicHeight(weight / scaleRatio);
   }, [scaleRatio]);
 
-  console.log(Object.keys(weightData).indexOf(year));
-
   const onClickHandler = async () => {
     const docRef = doc(db, "mantees", id);
 

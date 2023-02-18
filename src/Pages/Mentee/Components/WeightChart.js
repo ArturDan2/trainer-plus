@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import ExpendableButton from "../Subpages/Analysis/Components/ExpendableButton";
 import UpdateWeightWindow from "../Subpages/Analysis/Components/UpdateWeightWindow";
 import ChartStripe from "./ChartStripe";
